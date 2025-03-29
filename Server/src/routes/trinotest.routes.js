@@ -17,12 +17,10 @@ router.post("/testtrino", async (req, res) => {
       !connectionConfig.user ||
       !connectionConfig.password
     ) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Missing required connection parameters",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Missing required connection parameters",
+      });
     }
 
     const result = await testTrinoConnection(connectionConfig);
