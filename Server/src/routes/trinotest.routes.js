@@ -11,8 +11,18 @@ router.post("/testtrino", async (req, res) => {
 
     const connectionConfig = req.body; // Extract connection details from request body
 
-    if (!connectionConfig.host || !connectionConfig.port || !connectionConfig.user || !connectionConfig.password) {
-      return res.status(400).json({ success: false, message: "Missing required connection parameters" });
+    if (
+      !connectionConfig.host ||
+      !connectionConfig.port ||
+      !connectionConfig.user ||
+      !connectionConfig.password
+    ) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "Missing required connection parameters",
+        });
     }
 
     const result = await testTrinoConnection(connectionConfig);
@@ -26,7 +36,6 @@ router.post("/testtrino", async (req, res) => {
     });
   }
 });
-
 
 router.post("/", async (req, res) => {
   let inputValue = {
@@ -69,7 +78,7 @@ router.post("/", async (req, res) => {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer AstraCS:hxjebPiZnvMpQSQaZLPdDfzi:a3040aa24372c28a4c2e275a61b89e5e09957e4a64fd3f824c865ff9c1085651`,
+          Authorization: `Bearer `,
         },
       }
     );
@@ -97,6 +106,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/client", );
+router.post("/client");
 
 export default router;
